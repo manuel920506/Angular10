@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'FrontEnd';
+  nome = 'Manuel'
+
+  constructor()
+  {
+    setInterval( () => this.nome = 'Alejandro', 3000);    
+  }
+
+  getSomma(numero1: number , numero2: number)
+  {
+      return numero1 + numero2   
+  }
 }
