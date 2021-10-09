@@ -16,7 +16,8 @@ export class AppComponent {
   [
     {nome: "Manuel Rodriguez", stato: "Promosso"},
     {nome: "Mario Rossi", stato: "Regolare"},
-    {nome: "Giulia Pavarotti", stato: "Promosso"}
+    {nome: "Giulia Pavarotti", stato: "Promosso"},
+    {nome: "Francesca Magnani", stato: "Libero"}
   ]
   mostrare = true;
 

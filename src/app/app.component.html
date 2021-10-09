@@ -42,7 +42,7 @@
       <th>Stato</th>
     </thead>
     <tbody>
-      <tr *ngFor="let studente of listStudenti; let i = index">
+      <tr *ngFor="let studente of listStudenti; let i = index" [ngSwitch]="studente.stato">
         <td> {{i + 1}}</td>
         <td>{{studente.nome}}</td>
         <td
@@ -50,6 +50,17 @@
          [ngClass]="studente.stato === 'Promosso' ? 'badge badge-success' : 'badge badge-secondary'"
          >
          {{studente.stato}}
+        </td>
+        <td> 
+        <span *ngSwitchCase="'Promosso'" class =  'badge badge-success'>
+          {{studente.stato}}
+        </span> 
+        <span *ngSwitchCase="'Regolare'" class =  'badge badge-secondary'>
+          {{studente.stato}}
+        </span> 
+        <span *ngSwitchCase="'Libero'" class =  'badge badge-danger'>
+          {{studente.stato}}
+        </span> 
         </td>
       </tr> 
     </tbody>
