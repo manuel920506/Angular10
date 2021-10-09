@@ -27,4 +27,27 @@
     <br>
     {{text}}
   </div>
+
+  <div class="row"> 
+    <h3>
+      Lista di studenti.
+    </h3>
+    <button class="btn btn-primary ml-auto" (click)="toglee()">Toogle</button>
+  </div>
+  <br>
+  <table class="table" *ngIf="mostrare">
+    <thead>
+      <th>Nr</th>
+      <th>Nomre</th>
+      <th>Stato</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let studente of listStudenti; let i = index">
+        <td> {{i + 1}}</td>
+        <td>{{studente.nome}}</td>
+        <td>{{studente.stato}}</td>
+      </tr> 
+    </tbody>
+  </table>
+  <h3 *ngIf="listStudenti.length == 0">Non ci sono registri per mostrare</h3>
 </div>
