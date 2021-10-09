@@ -45,7 +45,12 @@
       <tr *ngFor="let studente of listStudenti; let i = index">
         <td> {{i + 1}}</td>
         <td>{{studente.nome}}</td>
-        <td [ngStyle]="{'font-style': studente.stato === 'Promosso' ? 'italic' : 'normal'}">{{studente.stato}}</td>
+        <td
+         [ngStyle]="{'font-style': studente.stato === 'Promosso' ? 'italic' : 'normal'}"
+         [ngClass]="studente.stato === 'Promosso' ? 'badge badge-success' : 'badge badge-secondary'"
+         >
+         {{studente.stato}}
+        </td>
       </tr> 
     </tbody>
   </table>
