@@ -1,6 +1,6 @@
-import { LoginComponent } from './componets/start/login/login.component';
-import { RegisterComponent } from './componets/start/register/register.component';
-import { WelcomeComponent } from './componets/start/welcome/welcome.component';
+import { LoginComponent } from './components/start/login/login.component';
+import { RegisterComponent } from './components/start/register/register.component';
+import { WelcomeComponent } from './components/start/welcome/welcome.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { } 
