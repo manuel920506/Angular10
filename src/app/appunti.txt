@@ -1,0 +1,7 @@
+ ng serve --o (per avviare il progetto)
+ ng g c (components/inizio per creare un componente)
+
+ ng serve --o -port 4500 (per avviare l'app da una porta diversa.)
+
+ 
+ 

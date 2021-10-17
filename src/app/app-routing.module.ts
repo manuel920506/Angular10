@@ -1,3 +1,6 @@
+import { ChangePasswordComponent } from './components/dashboard/change-password/change-password.component';
+import { QuestionnairesComponent } from './components/dashboard/questionnaires/questionnaires.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/start/login/login.component';
 import { RegisterComponent } from './components/start/register/register.component';
 import { WelcomeComponent } from './components/start/welcome/welcome.component';
@@ -15,7 +18,13 @@ const routes: Routes =
       { path: 'login', component: LoginComponent }
     ]
   }, 
-  { path: '**', redirectTo: '/welcome', pathMatch: 'full' } 
+  {path: 'dashboard', component: DashboardComponent, children:
+    [ 
+      { path: '', component: QuestionnairesComponent },
+      { path: 'changePassword', component: ChangePasswordComponent }
+    ]
+  },
+  { path: '**', redirectTo: '/start', pathMatch: 'full' } 
 ];
 
 @NgModule({

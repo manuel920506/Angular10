@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row" style="width: 100%;">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center" style="padding: 20px;"> 
+                <h3>Register</h3>
+                <br>
+                <form [formGroup]="register" (ngSubmit)="registerUser()">
+                    <div class="form-group" style="text-align: start;">
+                        <input type="text" class="form-control" placeholder="User" formControlName="user">
+                        <span class="text-danger ml-2"
+                        *ngIf="register.get('user').touched && register.get('user').hasError('required')">
+                            The user <strong> is requiered</strong>
+                        </span> 
+                    </div> 
+                    <div class="form-group" style="text-align: start;">
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password">
+                        <span class="text-danger ml-2"
+                        *ngIf="register.get('password').touched && register.get('password').hasError('required')">
+                            The password <strong> is requiered</strong>
+                        </span> 
+                        <span class="text-danger ml-2"
+                        *ngIf="register.get('password').touched && register.get('password').hasError('minlength')">
+                            The password <strong> must be at least 4 characters</strong>
+                        </span> 
+                    </div> 
+                    <div class="form-group" style="text-align: start;">
+                        <input type="password" class="form-control" placeholder="Repeat Password" formControlName="confirmPassword">
+                        <!--<span class="text-danger ml-2"
+                        *ngIf="(register.get('confirmPassword').value != register.get('password').value) && register.get('confirmPassword').touched">
+                            The passwords <strong>must match</strong>
+                        </span> -->
+                        <span class="text-danger ml-2"
+                        *ngIf="register.hasError('notSame')">
+                            The passwords <strong>must match</strong>
+                        </span> 
+                    </div> 
+                    <div class="form-group">
+                        <button class="btn btn-primary mr-2 btn-register" type="submit">Accept</button>
+                        <button class="btn btn-secondary mr-2" routerLink="/start/login">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
