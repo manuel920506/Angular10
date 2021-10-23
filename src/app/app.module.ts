@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 //Moduli
 import { AppRoutingModule } from './app-routing.module';
 import {ReactiveFormsModule} from '@angular/forms'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 //Componenti 
 import { AppComponent } from './app.component';
@@ -33,7 +35,9 @@ import { NavbarComponent } from './components/dashboard/navbar/navbar.component'
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

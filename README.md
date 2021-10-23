@@ -1,6 +1,10 @@
 # FrontEnd
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli)
+npm version 12.18.3
+ng version 10.0.6 (npm install -g @angular/cli@10.0.6)
+npm install bootstrap@4.5.2
+npm install ngx-toastr --save
 
 ## Development server
 

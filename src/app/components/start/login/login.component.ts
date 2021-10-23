@@ -1,6 +1,9 @@
 import { User } from '../../../models/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { createElementCssSelector } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +15,7 @@ export class LoginComponent implements OnInit {
   userHasErrorRequired: Boolean = false;
   passwordHasErrorRequired: Boolean = false;
   
-  constructor(private fb: FormBuilder) 
+  constructor(private fb: FormBuilder, private toastr: ToastrService, private route: Router) 
   { 
     this.login = this.fb.group
     (
@@ -34,6 +37,17 @@ export class LoginComponent implements OnInit {
     const user: User = {
       nameUser: this.login.value.user,
       passwordUser: this.login.value.password
+    }
+
+    if(user.nameUser === 'mrodriguez' && user.passwordUser === '123')
+    {
+      this.login.reset();
+       this.route.navigate(['/dashboard']);
+    }
+    else
+    {
+        this.toastr.error('User or password wrong', 'Error');
+        this.login.reset();
     }
 
     console.log(user);
