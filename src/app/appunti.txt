@@ -3,5 +3,7 @@
 
  ng serve --o -port 4500 (per avviare l'app da una porta diversa.)
 
+ ng build --prod  (per ottenere versione rilascio)
+
  
  

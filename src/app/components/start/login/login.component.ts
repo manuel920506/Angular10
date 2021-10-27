@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loading : boolean = false;
   login: FormGroup;
   userHasErrorRequired: Boolean = false;
   passwordHasErrorRequired: Boolean = false;
@@ -39,17 +40,22 @@ export class LoginComponent implements OnInit {
       passwordUser: this.login.value.password
     }
 
-    if(user.nameUser === 'mrodriguez' && user.passwordUser === '123')
+    this.loading = true;
+    setTimeout(() => 
     {
-      this.login.reset();
-       this.route.navigate(['/dashboard']);
-    }
-    else
-    {
-        this.toastr.error('User or password wrong', 'Error');
+      if(user.nameUser === 'mrodriguez' && user.passwordUser === '123')
+      {
         this.login.reset();
-    }
-
+         this.route.navigate(['/dashboard']);
+      }
+      else
+      {
+          this.toastr.error('User or password wrong', 'Error');
+          this.login.reset();
+      }
+      this.loading = false;
+    }, 3000)
+  
     console.log(user);
   } 
 }
