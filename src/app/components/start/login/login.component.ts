@@ -36,14 +36,14 @@ export class LoginComponent implements OnInit {
     console.log(this.login);   
 
     const user: User = {
-      nameUser: this.login.value.user,
-      passwordUser: this.login.value.password
+      UserNAme: this.login.value.user,
+      Password: this.login.value.password
     }
 
     this.loading = true;
     setTimeout(() => 
     {
-      if(user.nameUser === 'mrodriguez' && user.passwordUser === '123')
+      if(user.UserNAme === 'mrodriguez' && user.Password === '123')
       {
         this.login.reset();
          this.route.navigate(['/dashboard']);
