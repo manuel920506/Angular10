@@ -1,9 +1,9 @@
 import { User } from '../../../models/user';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { createElementCssSelector } from '@angular/compiler';
+import { ToastrService } from 'ngx-toastr'; 
 import { Router } from '@angular/router';
+import {LoginService} from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
   userHasErrorRequired: Boolean = false;
   passwordHasErrorRequired: Boolean = false;
   
-  constructor(private fb: FormBuilder, private toastr: ToastrService, private route: Router) 
+  constructor(private fb: FormBuilder,
+              private toastr: ToastrService,
+              private router: Router,
+              private loginService: LoginService) 
   { 
     this.login = this.fb.group
     (
@@ -30,32 +33,40 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  log(): void{ 
-    // this.userHasErrorRequired = this.login.get("user").hasError('required');
-    // this.passwordHasErrorRequired = this.login.get("password").hasError('required'); 
-    console.log(this.login);   
-
+  log(): void{  
     const user: User = {
       UserNAme: this.login.value.user,
       Password: this.login.value.password
     }
 
     this.loading = true;
-    setTimeout(() => 
-    {
-      if(user.UserNAme === 'mrodriguez' && user.Password === '123')
-      {
-        this.login.reset();
-         this.route.navigate(['/dashboard']);
-      }
-      else
-      {
-          this.toastr.error('User or password wrong', 'Error');
-          this.login.reset();
-      }
+
+    this.loginService.login(user).subscribe(data => {
+      console.log(data);
       this.loading = false;
-    }, 3000)
-  
-    console.log(user);
-  } 
-}
+      this.toastr.success(user.UserNAme + '!', 'Welcome');
+      this.loginService.setLocalStorage(data.message);
+      this.router.navigate(['/dashboard']);
+    }, error => {
+      this.loading  = false;
+      this.login.reset();
+      this.toastr.error(error.error.message, 'Error!'); 
+    });
+  }
+
+
+    // setTimeout(() => 
+    // {
+    //   if(user.UserNAme === 'mrodriguez' && user.Password === '123')
+    //   {
+    //     this.login.reset();
+    //      this.route.navigate(['/dashboard']);
+    //   }
+    //   else
+    //   {
+    //       this.toastr.error('User or password wrong', 'Error');
+    //       this.login.reset();
+    //   }
+    //   this.loading = false;
+    // }, 3000)
+}  
