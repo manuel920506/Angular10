@@ -5,6 +5,7 @@ npm version 12.18.3
 ng version 10.0.6 (npm install -g @angular/cli@10.0.6)
 npm install bootstrap@4.5.2
 npm install ngx-toastr --save
+npm install @auth0/angular-jwt
 
 ## Development server
 
