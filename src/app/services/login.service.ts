@@ -40,9 +40,9 @@ export class LoginService {
     localStorage.removeItem('token');
   }
 
-  getUserName(): string
-  {
-    return localStorage.getItem('userName');
-  }
+  // getUserName(): string
+  // {
+  //   return localStorage.getItem('userName');
+  // }
 
 }
